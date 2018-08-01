@@ -1,0 +1,7 @@
+{
+'domain':'.ketangpai.com'
+'name':'PHPSESSID'
+'value':ia7nuvg4fumps2juhrcjr1ci04
+'path':'/'
+'expires':null
+}

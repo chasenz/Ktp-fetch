@@ -179,29 +179,4 @@ public class Utils {
         }
         return regularStr;
     }
-
-
-    public static String getPhjsHtml(String url) {
-        Runtime rt = Runtime.getRuntime();
-        String exec = System.getProperty("user.dir") + "\\phantomjs\\bin\\phantomjs.exe \\res\\phantom.js " + url;
-        String anti_content = "";
-        try {
-            Process p = rt.exec(exec);
-            InputStream is = p.getInputStream();
-            StringBuffer out = new StringBuffer();
-            byte[] b = new byte[4096];
-            for (int n; (n = is.read(b)) != -1; ) {
-                String str = new String(b, 0, n);
-                str = str.replace("\r", "").replace("\n", "");
-                if (StringUtils.isNotBlank(str)) {
-                    out.append(str);
-                }
-            }
-            anti_content = out.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return anti_content;
-    }
-
 }
