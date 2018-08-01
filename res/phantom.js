@@ -10,6 +10,11 @@ page.onResourceReceived = function(response) {
 }
 
 page.open(url, function (status) {
+    var cookies = page.cookies;
+    console.log('Listing cookies:');
+    for(var i in cookies) {
+        console.log(cookies[i].name + '=' + cookies[i].value);
+    }
     //Page is loaded!
     if (status !== 'success') {
         console.log('Unable to post!');

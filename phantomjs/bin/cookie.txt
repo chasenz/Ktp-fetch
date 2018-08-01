@@ -1,0 +1,6 @@
+cookie={
+'domain':'.ketangpai.com'
+'name':'PHPSESSID'
+'value':'5o6nboo74o9776eum9drpmcme4'
+'path':'/'
+}
