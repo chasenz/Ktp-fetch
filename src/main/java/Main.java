@@ -12,12 +12,16 @@ public class Main {
 
         CookieStore cookiestore = hcu.getLoginCookie("703382282@qq.com","herry123qwe");
 //        System.out.println("cookie:"+cookiestore);
-        String res = hcu.getPhjsHtml("https://www.ketangpai.com/Testpaper/dotestpaper/testpaperid/MDAwMDAwMDAwMLOGqZWHz6uy.html");
-        System.out.println("res:"+res);
-//        String res = hcu.doGet("https://www.ketangpai.com/Interact/index/courseid/MDAwMDAwMDAwMLOcpduHua-x.html",cookiestore);
-//        System.out.println("post:"+res);
-//        String res = hcu.get("https://www.ketangpai.com/Main/index.html",true);
-//        System.out.println("res:"+res);
+        // 答题url
+        String authHost = "https://www.ketangpai.com/Testpaper/dotestpaper/testpaperid/MDAwMDAwMDAwMLSspdyGz9F1.html";
+        // 提取答题url的ID
+        String getTokenUrl = Utils.getStrByRegex1(authHost,".*testpaperid\\/(.*).html");
+        // 获取题目地址
+        String getSubjectUrl = "https://www.ketangpai.com/TestpaperApi/doSubjectList?testpaperid="+getTokenUrl;
+
+//        System.out.println("reg:"+getSubjectUrl);
+        String res = hcu.doGet(getSubjectUrl,cookiestore);
+        System.out.println(res);
     }
 
 }
