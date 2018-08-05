@@ -9,6 +9,8 @@ import java.security.MessageDigest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -178,5 +180,22 @@ public class Utils {
             regularStr = matcher.group(1);
         }
         return regularStr;
+    }
+
+    public static String getExamType(String typeNo){
+        Map<String,String> type = new HashMap<String,String>();
+        type.put("1","判断题");
+        type.put("2","单选题");
+        type.put("3","多选题");
+        type.put("4","简答题");
+        type.put("5","填空题");
+        type.put("6","不定项题");
+        type.put("10","段落说明");
+        // 题目type类型是否存在
+        if(type.get(typeNo) != null){
+            return type.get(typeNo);
+        }else {
+            return " ";
+        }
     }
 }
