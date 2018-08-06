@@ -3,11 +3,11 @@ package com.ktp.bean;
 import java.util.List;
 
 public class examInfo {
-    private String no;
-    private String type;
-    private String score;
-    private String title;
-    private List<String> optionList;
+    private String no;      //题目编号
+    private String type;    //题目类型
+    private String score;   //分值
+    private String title;   //问题
+    private List<String> optionList;   //选项【可空】
 
     public String getNo() {
         return no;

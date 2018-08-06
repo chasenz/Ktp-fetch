@@ -224,7 +224,6 @@ public class HttpClientUtil {
         return str;
     }
 
-
     /**
      * 解决源码的中文乱码问题
      */

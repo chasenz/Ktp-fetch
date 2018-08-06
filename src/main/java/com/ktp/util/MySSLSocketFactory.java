@@ -14,7 +14,8 @@ import java.security.cert.X509Certificate;
 
 
 /**
- * Created by Administrator on 17-8-8.
+ * 用于解决部分HTTPS请求报错问题
+ * 处理SSL握手问题
  */
 
 public class MySSLSocketFactory extends SSLSocketFactory {
