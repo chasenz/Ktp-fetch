@@ -1,7 +1,0 @@
-{
-'domain':'.ketangpai.com'
-'name':'PHPSESSID'
-'value':ooq48mmiotioe4fc5qlnhe8l41
-'path':'/'
-'expires':null
-}

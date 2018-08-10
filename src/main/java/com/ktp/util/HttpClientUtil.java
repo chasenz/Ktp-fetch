@@ -43,10 +43,10 @@ import java.util.concurrent.TimeUnit;
 
 public class HttpClientUtil {
     /**
-     * 获取课堂派Cookie
+     * 获取课堂派登陆Cookie
      * @param email - 邮箱/账号/手机号
      * @param password - 密码
-     * @return cookieStore：用于访问个人页面内容
+     * @return cookieStore：用于访问个人页面的Cookie
      */
     public CookieStore getLoginCookie(String email,String password) throws IOException, URISyntaxException {
         // 课堂派登陆地址
@@ -81,7 +81,6 @@ public class HttpClientUtil {
 
         //构造请求对象
         HttpUriRequest httpUriRequest = RequestBuilder.post().setUri(uri).setEntity(new UrlEncodedFormEntity(loginNV, "utf-8")).build();
-        HttpUriRequest httpUriRequest1 = RequestBuilder.post().setUri(new URIBuilder("https://www.ketangpai.com/Testpaper/dotestpaper/testpaperid/MDAwMDAwMDAwMLOGqZWHz6uy.html").build()).build();
 
         //执行请求，传入HttpContext，将会得到请求结果的信息
         HttpResponse response = httpClient.execute(httpUriRequest, httpClientContext);
@@ -92,13 +91,14 @@ public class HttpClientUtil {
         //-验证是否成功登陆
         HttpEntity entity = response.getEntity();
         InputStream is = entity.getContent();
+        //+处理中文乱码
         String result = convertToString(is);
         //+解析Json信息
         JSONObject infoJson = JSON.parseObject(result);
         int status = infoJson.getInteger("status");
         if(status == 1) {
             System.out.println("登陆成功");
-            // 保存cookie到本地，便于phantomjs读取
+            // 保存cookie到本地(可选)
             String filePath = System.getProperty("user.dir") + "\\res\\cookie.txt";
             saveCookieStore(cookieStore,filePath);
             return cookieStore;
@@ -107,7 +107,7 @@ public class HttpClientUtil {
             String info = infoJson.getString("info");
             System.out.println("失败："+ info);
         }
-        return cookieStore;
+        return null;
     }
 
     /**

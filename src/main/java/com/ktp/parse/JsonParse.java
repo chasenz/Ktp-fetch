@@ -19,10 +19,12 @@ public class JsonParse {
         List<String> optionList;
         // Json数据正常则读取
         if(resObj.getInteger("status") == 1){
+            // 获取测试题目列表Json数组
             JSONArray listsArray = resObj.getJSONArray("lists");
             for (int i=0; i<listsArray.size(); i++){
                 bean = new examInfo();
                 optionList = new ArrayList<String>();
+                // 获取单个测试题目Json数据
                 JSONObject examObj = listsArray.getJSONObject(i);
                 String no = String.valueOf(i+1);
                 String type = Utils.getExamType(examObj.getString("type"));
