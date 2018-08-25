@@ -7,11 +7,11 @@
 
 在IDEA或Eclipse环境中导入项目，选择Maven项目。
 
-如需生成realse版本则需要删除./src目录下的META-INF文件，以防止出错。
+如需生成release版本则需要删除./src目录下的META-INF文件，以防止出错。
 
 ## 使用
 
-[Realse版本](https://github.com/Umbrellazc/Ktp-fetch/releases)
+[Release版本](https://github.com/Umbrellazc/Ktp-fetch/releases)
 ```
 java -jar fetch-ktp-test.jar
 ```
